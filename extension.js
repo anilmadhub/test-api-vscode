@@ -22,11 +22,13 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		//vscode.window.showInformationMessage('Hello Vs ket!');
 		const editor = vscode.window.activeTextEditor;
 		var selection = editor.selection;
 		var url = editor.document.getText(selection);
 		//vscode.window.showInformationMessage(url);
+
+		url = url.replace(/"/g, "");
+		url = url.replace(/'/g, "");
 
 		if(!url.length) {
 			vscode.window.showWarningMessage('No API selected');
